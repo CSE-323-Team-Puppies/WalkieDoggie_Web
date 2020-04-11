@@ -12,6 +12,10 @@ export class jsTPS_Transaction {
     undoTransaction() {
         console.log("undoTransaction - MISSING IMPLEMENTATION");
     }
+    // added for redo
+    redoTransaction() {
+        console.log("redoTransaction - MISSING IMPLEMENTATION");
+    }
 }
 
 export class jsTPS {
@@ -21,6 +25,8 @@ export class jsTPS {
         this.mostRecentTransaction = -1;
         this.performingDo = false;
         this.performingUndo = false;
+        // added for redo
+        this.performingRedo = false;
     }
 
     isPerformingDo() {
@@ -30,7 +36,10 @@ export class jsTPS {
     isPerformingUndo() {
         return this.performingUndo;
     }
-
+    // added for redo
+    isPerformingRedo() {
+        return this.performingRedo;
+    }
     hasTransactionToRedo() {
         return (this.mostRecentTransaction+1) < this.numTransactions;
     }
@@ -82,7 +91,10 @@ export class jsTPS {
             this.performingUndo = false;
         }
     }
-
+    // added for redo
+    redoTransaction() {
+        this.doTransaction();
+    }
     clearAllTransactions() {
         // REMOVE ALL THE TRANSACTIONS
         this.transactions = [];

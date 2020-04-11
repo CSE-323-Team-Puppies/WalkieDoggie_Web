@@ -172,7 +172,10 @@ class App extends Component {
   undo = () => {
     this.tps.undoTransaction();
   }
-
+  // added for redo
+  redo = () => {
+    this.tps.redoTransaction();
+  }
   /**
    * resetTransactions - This method clears all the transactions in
    * the undo/redo stack, which should be done every time the logo
@@ -190,7 +193,10 @@ class App extends Component {
   canUndo = () => {
     return this.tps.hasTransactionToUndo();
   }
-
+  // added for redo
+  canRedo = () => {
+    return this.tps.hasTransactionToRedo();
+  }
   // THERE ARE SEVEN FUNCTIONS FOR UPDATING THE App state, TWO OF
   // THEM CANNOT BE UNDONE AND SO DO NOT REQUIRE TRANSACTIONS:
   // addNewLogo
@@ -346,6 +352,9 @@ class App extends Component {
           changeLogoCallback={this.buildChangeLogoTransaction}  // TRANSACTION CALLBACK
           undoCallback={this.undo}                        // TRANSACTION CALLBACK                       
           canUndo={this.canUndo}                          // TRANSACTION CALLBACK
+          // added for redo
+          redoCallback={this.redo}                        // TRANSACTION CALLBACK                       
+          canRedo={this.canRedo}                          // TRANSACTION CALLBACK
 
         />;
       default:
