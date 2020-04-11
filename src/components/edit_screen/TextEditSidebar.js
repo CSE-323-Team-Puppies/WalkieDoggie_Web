@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
 
 class TextEditSidebar extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         // WE'LL MANAGE THE UI CONTROL
         // VALUES HERE
         this.state = {
-            textColor : "#FF0000",
-            fontSize : 24
+            text: this.props.logo.text,
+            textColor : this.props.logo.textColor,
+            fontSize : this.props.logo.fontSize
         }
     }
 
@@ -26,14 +27,27 @@ class TextEditSidebar extends Component {
     }
 
     handleFontSizeChange = (event) => {
-        console.log("handleTextColorChangeComplete to " + event.target.value);
+        console.log("handleFontSizeChange to " + event.target.value);
         this.setState({ fontSize: event.target.value }, this.completeUserEditing);
     }
 
+    // added for text change
+    handleTextChange = () => {
+        console.log("handleTextChange");
+        let newText = prompt("Please Enter Text");
+        if (newText != null){
+            if (newText.trim().length === 0){
+                alert("Invalid Input!");
+            }
+            else{
+                // this.props.logo.text = newText;
+                this.setState({text: newText}, this.completeUserEditing);
+            }
+        }
+    }
     completeUserEditing = () => {
         console.log("completeUserEditing");
-        console.log("this.state.textColor: " + this.state.textColor);
-        this.props.changeLogoCallback(this.props.logo, this.props.logo.key, this.props.logo.text, this.state.textColor, this.state.fontSize);
+        this.props.changeLogoCallback(this.props.logo, this.props.logo.key, this.state.text, this.state.textColor, this.state.fontSize);
     }
 
     render() {
@@ -50,7 +64,7 @@ class TextEditSidebar extends Component {
             <div className="card-panel col s4">
                 <div className="card blue-grey darken-1">
                     <div className="card-content white-text">
-                        <button className="waves-effect waves-light btn-small">&#9998;</button>
+                        <button className="waves-effect waves-light btn-small" onClick={this.handleTextChange}>&#9998;</button>
                         <button className={undoClass} onClick={this.handleUndo}>Undo</button>
                         <button className={redoClass} onClick={this.handleRedo}>Redo</button>
                     </div>

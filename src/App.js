@@ -355,7 +355,6 @@ class App extends Component {
           // added for redo
           redoCallback={this.redo}                        // TRANSACTION CALLBACK                       
           canRedo={this.canRedo}                          // TRANSACTION CALLBACK
-
         />;
       default:
         return <div></div>;
