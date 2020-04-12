@@ -20,6 +20,11 @@ class Navbar extends React.Component {
     this.props.goToHomeCallback();
   }
 
+  // added for delete
+  handleDelete = () => {
+    console.log("delete logo");
+    this.props.deleteCallback(this.props.logo.key);
+  }
   render() {
     return (
       <nav>
@@ -30,7 +35,7 @@ class Navbar extends React.Component {
             goLogoLo
           </div>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
-            <li style={ {cursor: "pointer"} }>&#128465;</li>
+            <li style={ {cursor: "pointer", fontSize: "30px"} } onClick={this.handleDelete}>&#128465;</li>
           </ul>
         </div>
       </nav>

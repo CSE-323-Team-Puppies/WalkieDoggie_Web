@@ -21,11 +21,11 @@ export const TransactionType = {
 
 // DEFAULT VALUES FOR A BRAND NEW LOGO
 export const LogoDefaults = {
-  TEXT : "goLogoLo Logo",
-  TEXT_COLOR : "#FF0000",
-  FONT_SIZE : 24,
-  BACKGROUND_COLOR : "#0000FF",
-  BORDER_COLOR: "#0000FF",
+  TEXT: "goLogoLo Logo",
+  TEXT_COLOR: "#FF0000",
+  FONT_SIZE: 24,
+  BACKGROUND_COLOR: "#0000FF",
+  BORDER_COLOR: "#00FF00",
   BORDER_RADIUS: 0,
   BORDER_THICKNESS: 3,
   PADDING: 3,
@@ -95,8 +95,8 @@ class App extends Component {
   }
 
   // THERE ARE TWO NAVIGATION METHODS
-    // goToHomeScreen
-    // goToLogoScreen
+  // goToHomeScreen
+  // goToLogoScreen
 
   // AFTER THE STATE IS SET IT WILL FORCE A RENDER OF THIS 
   // FULL App COMPONENT USING THE HomeScreen
@@ -115,7 +115,7 @@ class App extends Component {
 
   // AFTER THE STATE IS SET IT WILL FORCE A RENDER OF THIS 
   // FULL App COMPONENT USING THE EditScreen  
-  goToEditScreen = (logo) => {    
+  goToEditScreen = (logo) => {
     // MAKE SURE logo IS AT THE TOP OF THE RECENT WORK LIST BY REMOVING
     // IT AND THEN PREPENDING
 
@@ -139,10 +139,10 @@ class App extends Component {
   }
 
   // FUNCTIONS FOR DEALING WITH THE TRANSACTION PROCESSING SYSTEM:
-    // buildChangeLogoTransaction
-    // undo
-    // resetTransactions
-    // canUndo
+  // buildChangeLogoTransaction
+  // undo
+  // resetTransactions
+  // canUndo
 
   /**
    * buildChangeLogoTransacation - This serves as a callback function for adding
@@ -283,9 +283,9 @@ class App extends Component {
   }
 
   // THERE ARE 3 SERVICE FUNCTIONS CALLED AFTER A LOGO EDIT
-    // completeLogosChange
-    // afterLogosChangeComplete
-    // afterLogoDeleted
+  // completeLogosChange
+  // afterLogosChangeComplete
+  // afterLogoDeleted
 
   completeLogosChange = (nextLogos) => {
     // NOW GET THE LOGO TO EDIT
@@ -321,8 +321,8 @@ class App extends Component {
   }
 
   // THERE ARE TWO FUNCTIONS TO HELP GENERATE OUTPUT FOR DEBUGGING
-    // logoToString
-    // logosToString
+  // logoToString
+  // logosToString
 
   // CREATES AND RETURNS A TEXTUAL SUMMARY OF logoToDisplay
   logoToString = (logoToDisplay) => {
@@ -379,6 +379,8 @@ class App extends Component {
           // added for redo
           redoCallback={this.redo}                        // TRANSACTION CALLBACK                       
           canRedo={this.canRedo}                          // TRANSACTION CALLBACK
+          // added for delete
+          deleteCallback={this.deleteLogo}
         />;
       default:
         return <div></div>;
