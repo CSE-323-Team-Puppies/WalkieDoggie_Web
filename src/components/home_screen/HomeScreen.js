@@ -27,7 +27,8 @@ class HomeScreen extends Component {
         console.log("\tHomeScreen render");
 
         return (
-            <div className="container row">
+            <div class="container">
+                <div className="row">
                 <div className="col s4">
                     <h3>Recent Work</h3>
                     <LogoLinks
@@ -47,6 +48,7 @@ class HomeScreen extends Component {
                             Create a New Logo
                         </button>
                     </div>
+                </div>
                 </div>
             </div>
         )

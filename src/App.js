@@ -364,11 +364,18 @@ class App extends Component {
     console.log("App render");
     switch (this.state.currentScreen) {
       case AppScreen.HOME_SCREEN:
-        return <HomeScreen
-          logos={this.state.logos}                // THE LOGOS TO BE DISPLAYED
-          addNewLogoCallback={this.addNewLogo}            // MAKE NEW LOGO CALLBACK
-          goToLogoCallback={this.goToEditScreen}          // WORK ON SELECTED LOGO CALLBACK
-        />;
+        return <div>
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d25361.947497152825!2d126.66334934999999!3d37.38407485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2skr!4v1590163516160!5m2!1sen!2skr" style={{width:"800px", height:"1048px"}}></iframe> 
+                  <div className="container" style={{backgroundColor:"#2bcce1", width: "800px", height: "370px", justifyContent: "center", alignItems: "center"}}>
+                    <div className="row" style={{justifyContent: "center", alignItems: "center"}}>
+                      <button className="btn-warning" style={{justifyContent: "center", alignItems:"center", borderRadius: 50}}>START</button></div>
+                      </div>
+                </div>
+        // <HomeScreen
+        //   logos={this.state.logos}                // THE LOGOS TO BE DISPLAYED
+        //   addNewLogoCallback={this.addNewLogo}            // MAKE NEW LOGO CALLBACK
+        //   goToLogoCallback={this.goToEditScreen}          // WORK ON SELECTED LOGO CALLBACK
+        // />;
       case AppScreen.EDIT_SCREEN:
         return <EditScreen
           logo={this.state.currentLogo}                         // DATA NEEDED BY THIS COMPONENT AND ITS DESCENDANTS
